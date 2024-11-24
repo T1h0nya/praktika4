@@ -1,0 +1,69 @@
+﻿<Page x:Class="Praktika4.UserPersonalCabinetPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Praktika4"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="UserPersonalCabinetPage">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <!-- приветственное сообщение -->
+            <TextBlock Name="WelcomeMessage" FontSize="20" HorizontalAlignment="Center" Margin="10"/>
+
+            <!-- поле для ввода названия книги -->
+            <Grid>
+                <TextBox Name="ExpenseCategoryInput" Width="200" />
+                <TextBlock Text="Категория"
+             Foreground="Gray"
+             Margin="5,0,0,0"
+             IsHitTestVisible="False"
+             VerticalAlignment="Center">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Category, ElementName=ExpenseCategoryInput}" Value="">
+                                    <Setter Property="Visibility" Value="Visible" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </Grid>
+
+            <!-- поле для ввода автора книги -->
+            <Grid>
+                <TextBox Name="AmountInput" Width="200" />
+                <TextBlock Text="Расход"
+             Foreground="Gray"
+             Margin="5,0,0,0"
+             IsHitTestVisible="False"
+             VerticalAlignment="Center">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Category, ElementName=AmountInput}" Value="">
+                                    <Setter Property="Visibility" Value="Visible" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </Grid>
+
+            <!-- кнопка добавления книги -->
+            <Button Name="AddBookButton" Content="Добавить расход" Width="150" Click="AddExpenseButton_Click" Margin="10"/>
+
+            <!-- список книг -->
+            <ListBox Name="ExpensesList" Width="400" Height="200" Margin="10"/>
+
+            <!-- кнопка удаления книги -->
+            <Button Name="DeleteExpeceButton" Content="Удалить расход" Width="150" Click="RemoveExpenseButton_Click" Margin="10"/>
+        </StackPanel>
+
+    </Grid>
+</Page>
